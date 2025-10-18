@@ -34,7 +34,8 @@ logger = logging.getLogger(__name__)
 # Add stderr handler for ERROR and CRITICAL level messages
 # This is for good UNIX behavior of outputs going to stdout and errors/criticals
 # going to stderr
-stderr_handler = logging.StreamHandler(sys.stderr)
+# Use stream=None to get sys.stderr dynamically, which helps with pytest capsys
+stderr_handler = logging.StreamHandler()  # Defaults to sys.stderr
 stderr_handler.setLevel(logging.ERROR)
 stderr_formatter = logging.Formatter('Error: %(message)s')
 stderr_handler.setFormatter(stderr_formatter)
@@ -271,7 +272,8 @@ def main() -> int:
         
         # Output results to stdout
         for cookie in most_active_cookies:
-            logger.info(cookie)
+            print(cookie)
+            logger.info(f"Returned cookie: {cookie}")
         
         # all went well
         # return 0 because it is good coding practice for running on Unix/Linux envs
@@ -280,12 +282,15 @@ def main() -> int:
         
     except FileNotFoundError as e:
         logger.error(str(e))
+        print(f"Error: {e}", file=sys.stderr)
         return 1
     except ValueError as e:
         logger.error(str(e))
+        print(f"Error: {e}", file=sys.stderr)
         return 1
     except Exception as e:
-        logger.error(str(e))
+        logger.exception("Unexpected error occurred")
+        print(f"Error: An unexpected error occurred: {e}", file=sys.stderr)
         return 1
 
 if __name__ == "__main__":
