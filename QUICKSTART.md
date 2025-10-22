@@ -45,10 +45,10 @@ python src/most_active_cookie.py -f test_inputs/cookie_log.csv -d 2018-12-09 -v
 python src/most_active_cookie.py -f test_inputs/cookie_log.csv -d 2018-12-08
 ```
 
-Output (when there's a tie):
+Output (when there's a tie - order may vary):
 ```
-4sMM2LxV07bPJzwf
 SAZuXPGUrfbcn5UA
+4sMM2LxV07bPJzwf
 fbcn5UAVanZf6UtG
 ```
 
@@ -58,11 +58,11 @@ fbcn5UAVanZf6UtG
 python src/most_active_cookie.py -f test_inputs/cookie_log_1.csv -d 2018-12-15
 ```
 
-Output:
+Output (order may vary):
 ```
-5UAVanZf6UtGyKVS
 AtY0laUfhglK3lC7
 SAZuXPGUrfbcn5UA
+5UAVanZf6UtGyKVS
 ```
 
 ### Help

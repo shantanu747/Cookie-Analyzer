@@ -4,7 +4,7 @@ A command-line tool to find the most active cookie(s) for a specific day from a 
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![Tests](https://img.shields.io/badge/tests-21%20passed-brightgreen.svg)]()
-[![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen.svg)]()
+[![Coverage](https://img.shields.io/badge/coverage-91%25-brightgreen.svg)]()
 [![Code Style](https://img.shields.io/badge/code%20style-ruff-purple.svg)](https://github.com/astral-sh/ruff)
 
 ## Overview
@@ -105,10 +105,10 @@ AtY0laUfhglK3lC7
 ```bash
 python src/most_active_cookie.py -f test_inputs/cookie_log.csv -d 2018-12-08
 ```
-Output (sorted alphabetically):
+Output (order may vary):
 ```
-4sMM2LxV07bPJzwf
 SAZuXPGUrfbcn5UA
+4sMM2LxV07bPJzwf
 fbcn5UAVanZf6UtG
 ```
 
@@ -198,7 +198,7 @@ The tool uses a single-pass counting algorithm with early-exit optimization:
 │  │  - Validates date format          │  │
 │  │  - Opens file in streaming mode   │  │
 │  │  - Parses and counts cookies      │  │
-│  │  - Returns sorted results         │  │
+│  │  - Returns results                │  │
 │  └───────────────────────────────────┘  │
 │  ┌───────────────────────────────────┐  │
 │  │  _parse_line()                    │  │
@@ -403,7 +403,7 @@ Find the most active cookie(s) for a specific date.
 - `target_date` (str): Date string in YYYY-MM-DD format (UTC)
 
 **Returns:**
-- `List[str]`: Sorted list of cookie IDs with maximum visits. Empty list if no cookies found.
+- `List[str]`: List of cookie IDs with maximum visits. Empty list if no cookies found.
 
 **Raises:**
 - `ValueError`: If date format is invalid
